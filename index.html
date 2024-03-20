@@ -66,10 +66,8 @@
   </a-scene>
 
   <script>
-    // Add event listener to hide loading overlay when NFT markers are loaded
-    window.addEventListener("arjs-nft-loaded", (event) => {
-      var loader = document.getElementById('loader');
-      loader.style.display = 'none';
+     window.addEventListener("arjs-nft-loaded", (event) => {
+      console.log("hide loading overlay")
     });
   </script>
 
