@@ -31,7 +31,7 @@
 
 <body style="margin : 0px; overflow: hidden;">
   <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
-  <div class="arjs-loader">
+  <div class="arjs-loader" id="loader">
     <div>Loading, please wait...</div>
   </div>
 
@@ -64,4 +64,13 @@
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
   </a-scene>
+
+  <script>
+    // Add event listener to hide loading overlay when NFT markers are loaded
+    window.addEventListener("arjs-nft-loaded", (event) => {
+      var loader = document.getElementById('loader');
+      loader.style.display = 'none';
+    });
+  </script>
+
 </body>
