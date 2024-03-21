@@ -1,5 +1,5 @@
 <!-- import aframe and then ar.js with image tracking / location based features -->
-<script src="js/aframe-master.min.js"></script>
+<script src="js/aframe.min.js"></script>
 <script src="js/aframe-ar-nft.js"></script>
 <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -27,13 +27,7 @@
     font-size: 1.25em;
     color: white;
   }
-  #box {
-    width: 70%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    background-color: red;
-  }
+  
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
@@ -63,18 +57,26 @@
       <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
       <a-entity
         src="assets/asset.gltf"
-        scale="5 5 5"
-        position="50 150 0"
+        scale="2 2 2"
+        position="0 0 -1"
       >
       </a-entity>
-
-      <a-sphere color="red" radius="0.1" position="50 150 -1"></a-sphere>
 
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
 
-    <a-sphere color="red" radius="1" position="0 0 0" scale="2 2 2"></a-sphere>
+    <a-entity id="box" geometry="primitive: box; width: 0.1; height: 0.01; depth: 0.01;" material="color: blue;" position="0 0 -0.5"></a-entity>
+
+    <a-sphere color="blue" radius="0.1" position="50 150 -1"></a-sphere>
+
+    <a-cylinder
+        position="1 0.75 -3"
+        radius="0.5"
+        height="1.5"
+        color="#FFC65D"
+      ></a-cylinder>
+
   </a-scene>
 
   <script>
