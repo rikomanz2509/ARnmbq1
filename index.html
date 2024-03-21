@@ -50,19 +50,19 @@
     
     <!-- NFT MARKER -->
     <a-nft type="nft" url="ARnmbq1/assets/Images/img" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
-      <a-entity gltf-model="assets/magnemite/scene.gltf" scale="2 2 2" position="0 0 -1"></a-entity>
+      <a-box position='0 0 0' color="yellow"></a-box>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     </a-nft>
       
     <!-- AR MARKER -->
-    <a-marker id="marker" src="assets/marker.patt">
+    <a-marker id="marker" url="ARnmbq1/assets/marker.patt">
       <a-box position='0 0 0' color="yellow"></a-box>
       <div id="tracked">Tracked</div>
     </a-marker>
 
     <!-- HIRO MARKER -->
     <a-marker preset="hiro">
-      <a-entity src="assets/asset.gltf" scale="2 2 2" position="0 0 0"></a-entity>
+      <a-entity gltf-model="assets/magnemite/scene.gltf" scale="2 2 2" position="0 0 0"></a-entity>
       <a-box position='0 0 0' color="yellow"></a-box>
     </a-marker>
 
