@@ -27,6 +27,15 @@
     font-size: 1.25em;
     color: white;
   }
+
+  #tracked {
+    height: 20%;
+    width: 20%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: rgba(0,0,0,0.8);
+  }
   
 </style>
 
@@ -37,52 +46,28 @@
   </div>
 
   <!-- a-frame scene -->
-  <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
-    <!-- a-nft is the anchor that defines an Image Tracking entity -->
-    <!-- on 'url' use the path to the Image Descriptors created before. -->
-    <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
-    <a-nft
-      type="nft"
-      url="ARnmbq1/assets/Images/img"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-      <a-entity
-        src="assets/asset.gltf"
-        scale="2 2 2"
-        position="0 0 -1"
-      >
-      </a-entity>
-
+  <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+    
+    <!-- NFT MARKER -->
+    <a-nft type="nft" url="ARnmbq1/assets/Images/img" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
+      <a-entity gltf-model="assets/magnemite/scene.gltf" scale="2 2 2" position="0 0 -1"></a-entity>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-
     </a-nft>
-    <!-- static camera that moves according to the device movemenents -->
-    <a-cylinder position="0 0.75 -5" radius="0.1" height=".5" color="#FFC65D"></a-cylinder>
+      
+    <!-- AR MARKER -->
+    <a-marker id="marker" src="assets/marker.patt">
+      <a-box position='0 0 0' color="yellow"></a-box>
+      <div id="tracked">Tracked</div>
+    </a-marker>
 
-      <!-- AR MARKER -->
-      <a-marker id="marker" src="assets/marker.patt">
+    <!-- HIRO MARKER -->
+    <a-marker preset="hiro">
+      <a-entity src="assets/asset.gltf" scale="2 2 2" position="0 0 0"></a-entity>
+      <a-box position='0 0 0' color="yellow"></a-box>
+    </a-marker>
 
-        <a-box position='0 0.5 0' color="yellow"></a-box>
-        <a-box position='0 0.5 -2' color="yellow"></a-box>
-
-      </a-marker>
-
-      <!-- HIRO MARKER -->
-      <a-marker preset="hiro">
-        <a-entity src="assets/asset.gltf" scale="2 2 2" position="0 0 -.5"></a-entity>
-        <a-box position='0 0.5 -2' color="yellow"></a-box>
-      </a-marker>
-
-
+  <!-- CAMERA -->
+  <a-entity camera></a-entity>
   </a-scene>
 
   <script>
