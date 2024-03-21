@@ -15,7 +15,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -28,7 +28,7 @@
     color: white;
   }
   #box {
-    width: 50%;
+    width: 70%;
     height: 100%;
     position: absolute;
     left: 0;
@@ -62,7 +62,7 @@
     <!-- the path should end with the name without the extension e.g. if file is 'pinball.fset' the path should end with 'pinball' -->
     <a-nft
       type="nft"
-      url="assets/Images/img"
+      url=" ARnmbq1/assets/Images/img"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
@@ -75,11 +75,14 @@
         position="50 150 0"
       >
       </a-entity>
+
+      <a-sphere color="red" radius="0.1" position="50 150 -1"></a-sphere>
+
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
 
-    <a-sphere color="red" radius="0.1"></a-sphere>
+    <a-sphere color="red" radius="1" position="0 0 0" scale="2 2 2"></a-sphere>
   </a-scene>
 
   <script>
@@ -87,5 +90,4 @@
       console.log("hide loading overlay")
     });
   </script>
-
 </body>
