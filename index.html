@@ -27,12 +27,27 @@
     font-size: 1.25em;
     color: white;
   }
+  #box {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background-color: red;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+  }
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
   <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
   <div class="arjs-loader" id="loader">
     <div>Loading, please wait...</div>
+  </div>
+
+  <div id="box">
+      <img id="img" src="assets/Images/qr-code.png">
   </div>
 
   <!-- a-frame scene -->
@@ -63,6 +78,8 @@
     </a-nft>
     <!-- static camera that moves according to the device movemenents -->
     <a-entity camera></a-entity>
+
+    <a-sphere color="red" radius="0.1"></a-sphere>
   </a-scene>
 
   <script>
