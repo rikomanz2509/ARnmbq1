@@ -36,6 +36,17 @@
     top: 50%;
     background-color: rgba(0,0,0,0.8);
   }
+
+  #centralText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      color: white;
+      font-size: 24px;
+      display: none; /* Start hidden */
+    }
   
 </style>
 
@@ -51,7 +62,7 @@
     <!-- NFT MARKER -->
     <a-nft type="nft" url="ARnmbq1/assets/Images/qr-code/qr-code" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
       <a-entity gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf" scale="5 5 5" position="150 300 -100"></a-entity>
-      <a-box position='0 0 0' color="yellow"></a-box>
+      <a-box position='0 0 0' color="blue"></a-box>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
     </a-nft>
 
@@ -75,9 +86,24 @@
   <a-entity camera></a-entity>
   </a-scene>
 
+  <div id="centralText">Image tracked</div>
+
   <script>
      window.addEventListener("arjs-nft-loaded", (event) => {
       console.log("hide loading overlay")
+    });
+
+
+     // Ereignislistener für das 'markerFound'-Ereignis des NFTs
+     document.querySelector('a-nft').addEventListener('markerFound', function () {
+      // Wenn das NFT erfolgreich getrackt wird, zeige das Div-Element an
+      document.getElementById('centralText').style.display = 'block';
+    });
+
+    // Ereignislistener für das 'markerLost'-Ereignis des NFTs
+    document.querySelector('a-nft').addEventListener('markerLost', function () {
+      // Wenn das NFT nicht mehr getrackt wird, verstecke das Div-Element
+      document.getElementById('centralText').style.display = 'none';
     });
   </script>
 </body>
