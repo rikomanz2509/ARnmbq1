@@ -85,8 +85,7 @@
 
     <!-- HIRO MARKER -->
     <a-marker id="hiro_marker" preset="hiro" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-      <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 0 0" scale="7 7 7"></a-entity>
-      <a-box id="hiro_box" class="clickable" position='0 0 0' color="blue" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
+      <a-box id="hiro_box" class="clickable" position='0 0 0' color="red" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
 
     </a-marker>
 
@@ -94,6 +93,7 @@
 
   <!-- CAMERA -->
   <a-entity camera></a-entity>
+  
   
   </a-scene>
   
@@ -121,8 +121,7 @@
 
     function handleClick(){
 
-      document.getElementById('interactionText').style.display ='block'
-
+      //document.getElementById('interactionText').style.display ='block'
       var videoElement = document.createElement('a-video');
         videoElement.setAttribute('src', 'assets/globe.mp4'); // Passe die URL zum 360-Grad-Video an
         videoElement.setAttribute('position', '0 0 -20');
