@@ -74,14 +74,14 @@
     <!-- NFT MARKER VIRTUAL INFOPOINT -->
     <a-nft type="nft" url="ARnmbq1/assets/Images/img" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
       <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 1 -2" scale="7 7 7"></a-entity>
-      <a-image position="0 0 -5" src="assets/Images/marker (1).png" scale="7 7 7"></a-image>
-      <a-box position='0 0 0' color="yellow" scale="42 2 12"></a-box>
+      <a-image position="0 0 50" src="assets/Images/marker (1).png" scale="7 7 7"></a-image>
+      <a-box position='0 0 -50' color="yellow" scale="82 2 12"></a-box>
     </a-nft>
 
     <!-- HIRO MARKER -->
     <a-marker id="hiro_marker" preset="hiro" markerhandler emitevents="true">
       <a-entity gltf-model="assets/GLman.glb"></a-entity>
-      <a-box id="hiro_box" position='0 0 0' color="red" scale=".5 .5 .5"></a-box>
+      <a-box id="hiro_box" position='0 0 0' color="blue" scale=".5 .5 .5"></a-box>
     </a-marker>
 
     <a-entity id="coordinateDisplay" position="0 0 -1"></a-entity>
@@ -92,14 +92,12 @@
   </a-scene>
 
   <div id="centralText">Image tracked</div>
-
   <div id="interactionText">Start Interaction</div>
 
   <script>
      window.addEventListener("arjs-nft-loaded", (event) => {
       console.log("hide loading overlay")
     });
-
 
      // Ereignislistener für das 'markerFound'-Ereignis des NFTs
      document.querySelector('a-nft').addEventListener('markerFound', function () {
@@ -113,16 +111,16 @@
       document.getElementById('centralText').style.display = 'none';
     });
 
-    document.getElementById("hiro_box").addEventListener('touchstart', handleClick)
-    document.getElementById("hiro_box").addEventListener('click', handleClick)
-    
     function handleClick(){
       document.getElementById('interactionText').style.display = 'block';
     }
 
-
     // Ereignislistener für das 'markerFound'-Ereignis des HIRO-Markers
   document.querySelector('a-marker').addEventListener('markerFound', function () {
+
+    document.getElementById("hiro_box").addEventListener('touchstart', handleClick)
+    document.getElementById("hiro_box").addEventListener('click', handleClick)
+
     // Bei der Markierungserkennung aktualisiere die Anzeige der Koordinaten
     updateCoordinateDisplay(this.object3D.position);
   });
