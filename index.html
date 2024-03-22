@@ -79,9 +79,9 @@
     </a-nft>
 
     <!-- HIRO MARKER -->
-    <a-marker id="hiro_marker" preset="hiro" markerhandler emitevents="true">
+    <a-marker id="hiro_marker" preset="hiro" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
       <a-entity gltf-model="assets/GLman.glb"></a-entity>
-      <a-box id="hiro_box" position='0 0 0' color="yellow" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
+      <a-box id="hiro_box" class="clickable" position='0 0 0' color="yellow" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
     </a-marker>
 
     <a-entity id="coordinateDisplay" position="0 0 -1"></a-entity>
