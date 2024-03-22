@@ -59,6 +59,10 @@
       display: none; /* Start hidden */
       background-color: rgba(0,0,0,0.8);
     }
+
+    #video360 {
+      display: none;
+    }
   
 </style>
 
@@ -85,7 +89,7 @@
 
     </a-marker>
 
-    <a-entity id="coordinateDisplay" position="0 0 -1"></a-entity>
+    <!-- <a-video id="video360" src="assets/globe.mp4" width="16" height="9" position="0 0 -20" autoplay="true"></a-video> -->
 
   <!-- CAMERA -->
   <a-entity camera></a-entity>
@@ -97,6 +101,7 @@
   <div id="interactionText">Starting Video...</div>
 
   <script>
+
      window.addEventListener("arjs-nft-loaded", (event) => {
       console.log("hide loading overlay")
     });
@@ -118,8 +123,10 @@
       document.getElementById('interactionText').style.display ='block'
 
       var videoElement = document.createElement('a-video');
-        videoElement.setAttribute('src', 'assets/Notification.mov'); // Passe die URL zum 360-Grad-Video an
-        videoElement.setAttribute('position', '0 1 -2'); // Passe die Position des Videos an
+        videoElement.setAttribute('src', 'assets/globe.mp4'); // Passe die URL zum 360-Grad-Video an
+        videoElement.setAttribute('position', '0 0 -20');
+        videoElement.setAttribute('width', '16')
+        videoElement.setAttribute('height', '9')
         videoElement.setAttribute('autoplay', true); // Lasse das Video automatisch abspielen
         videoElement.setAttribute('loop', true); // Lasse das Video in einer Schleife wiederholen
         videoElement.setAttribute('muted', true); // Stelle sicher, dass das Video stummgeschaltet ist
@@ -129,28 +136,13 @@
         scene.appendChild(videoElement);
     }
 
+  
     // Ereignislistener für das 'markerFound'-Ereignis des HIRO-Markers
-  document.querySelector('a-marker').addEventListener('markerFound', function () {
+    document.querySelector('a-marker').addEventListener('markerFound', function () {
 
     document.getElementById("hiro_box").addEventListener("onefingermove", handleClick);
     document.getElementById("hiro_box").addEventListener('click', handleClick)
-
-    // Bei der Markierungserkennung aktualisiere die Anzeige der Koordinaten
-    updateCoordinateDisplay(this.object3D.position);
   });
 
-  // Funktion zur Aktualisierung der Koordinatenanzeige
-  function updateCoordinateDisplay(position) {
-    // Wähle das Element zur Anzeige der Koordinaten aus
-    var coordinateDisplay = document.getElementById('coordinateDisplay');
-    
-    // Aktualisiere den Text des Anzeigeelements mit den aktuellen Koordinaten
-    coordinateDisplay.setAttribute('text', {
-      value: 'Position: ' + position.x.toFixed(2) + ', ' + position.y.toFixed(2) + ', ' + position.z.toFixed(2),
-      align: 'center'
-    });
-  }
-
-  
   </script>
 </body>
