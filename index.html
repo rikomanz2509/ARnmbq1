@@ -74,15 +74,14 @@
     <!-- NFT MARKER VIRTUAL INFOPOINT -->
     <a-nft type="nft" url="ARnmbq1/assets/Images/img" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
       <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 1 -2" scale="7 7 7"></a-entity>
-      <a-entity gltf-model="assets/GLman.glb" position="0 1 -2" scale="7 7 7"></a-entity>
       <a-image position="0 0 -5" src="assets/Images/marker (1).png" scale="7 7 7"></a-image>
-      <a-box position='1 1 -2' color="yellow" scale="42 2 12"></a-box>
+      <a-box position='-20 1 -2' color="yellow" scale="42 2 12"></a-box>
     </a-nft>
 
     <!-- HIRO MARKER -->
     <a-marker id="hiro_marker" preset="hiro">
       <a-entity gltf-model="assets/GLman.glb"></a-entity>
-      <a-box id="hiro_box" position='0 0 0' color="red"></a-box>
+      <a-box id="hiro_box" position='0 0 0' color="blue"></a-box>
     </a-marker>
 
   <!-- CAMERA -->
@@ -112,13 +111,11 @@
       document.getElementById('centralText').style.display = 'none';
     });
 
-    document.getElementById("hiro_box").addEventListener('touchstart', function() {
-      document.getElementById('interactionText').style.display = 'block';
-    });
+    document.getElementById("hiro_box").addEventListener('touchstart', handleClick)
+    document.getElementById("hiro_box").addEventListener('click', handleClick)
     
-    document.querySelector("hiro_marker").addEventListener('touchstart', function() {
+    function handleClick(){
       document.getElementById('interactionText').style.display = 'block';
-    });
-
+    }
   </script>
 </body>
