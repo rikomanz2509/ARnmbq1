@@ -6,6 +6,7 @@
 <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
 <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script> -->
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <!-- style for the loader -->
 <style>
@@ -129,7 +130,8 @@
         videoElement.setAttribute('height', '9')
         videoElement.setAttribute('autoplay', true); // Lasse das Video automatisch abspielen
         videoElement.setAttribute('loop', true); // Lasse das Video in einer Schleife wiederholen
-        videoElement.setAttribute('muted', true); // Stelle sicher, dass das Video stummgeschaltet ist
+        videoElement.setAttribute('muted', true);
+        videoElement.setAttribute('playsinline', true); // Stelle sicher, dass das Video stummgeschaltet ist
 
         // Füge das Video-Element zum <a-scene>-Element hinzu
         var scene = document.querySelector('a-scene');
