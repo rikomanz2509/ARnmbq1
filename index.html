@@ -82,6 +82,19 @@
     <a-marker id="hiro_marker" preset="hiro" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
       <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 0 0" scale="7 7 7"></a-entity>
       <a-box id="hiro_box" class="clickable" position='0 0 0' color="yellow" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
+      
+
+      <a-entity
+      id="bowser_model"
+      gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+      scale="5 5 5"
+      position="50 150 0"
+      class="clickable"
+      gesture-handler="minScale: 0.25; maxScale: 10"
+    >
+    </a-entity>
+
+
     </a-marker>
 
     <a-entity id="coordinateDisplay" position="0 0 -1"></a-entity>
@@ -93,7 +106,7 @@
   
 
   <div id="centralText">Image tracked</div>
-  <div id="interactionText">Start Interaction</div>
+  <div id="interactionText">Starting Video...</div>
 
   <script>
      window.addEventListener("arjs-nft-loaded", (event) => {
@@ -113,7 +126,16 @@
     });
 
     function handleClick(){
-      document.getElementById('interactionText').style.display = 'block';
+      var videoElement = document.createElement('a-video');
+        videoElement.setAttribute('src', 'assests/Notification.mov'); // Passe die URL zum 360-Grad-Video an
+        videoElement.setAttribute('position', '0 1 -2'); // Passe die Position des Videos an
+        videoElement.setAttribute('autoplay', true); // Lasse das Video automatisch abspielen
+        videoElement.setAttribute('loop', true); // Lasse das Video in einer Schleife wiederholen
+        videoElement.setAttribute('muted', true); // Stelle sicher, dass das Video stummgeschaltet ist
+
+        // Füge das Video-Element zum <a-scene>-Element hinzu
+        var scene = document.querySelector('a-scene');
+        scene.appendChild(videoElement);
     }
 
     // Ereignislistener für das 'markerFound'-Ereignis des HIRO-Markers
