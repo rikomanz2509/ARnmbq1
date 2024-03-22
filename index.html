@@ -69,11 +69,11 @@
   </div>
 
   <!-- a-frame scene -->
-  <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+  <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;" gesture-detector>
     
     <!-- NFT MARKER VIRTUAL INFOPOINT -->
     <a-nft type="nft" url="ARnmbq1/assets/Images/img" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
-      <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 1 -2" scale="7 7 7"></a-entity>
+      <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 0 0" scale="7 7 7"></a-entity>
       <a-image position="0 0 50" src="assets/Images/marker (1).png" scale="7 7 7"></a-image>
       <a-box position='0 0 -50' color="yellow" scale="82 2 12"></a-box>
     </a-nft>
@@ -81,7 +81,7 @@
     <!-- HIRO MARKER -->
     <a-marker id="hiro_marker" preset="hiro" markerhandler emitevents="true">
       <a-entity gltf-model="assets/GLman.glb"></a-entity>
-      <a-box id="hiro_box" position='0 0 0' color="blue" scale=".5 .5 .5"></a-box>
+      <a-box id="hiro_box" position='0 0 0' color="yellow" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
     </a-marker>
 
     <a-entity id="coordinateDisplay" position="0 0 -1"></a-entity>
@@ -90,6 +90,7 @@
   <a-entity camera></a-entity>
   
   </a-scene>
+  
 
   <div id="centralText">Image tracked</div>
   <div id="interactionText">Start Interaction</div>
@@ -118,7 +119,7 @@
     // Ereignislistener für das 'markerFound'-Ereignis des HIRO-Markers
   document.querySelector('a-marker').addEventListener('markerFound', function () {
 
-    document.getElementById("hiro_box").addEventListener('touchstart', handleClick)
+    document.getElementById("hiro_box").addEventListener("onefingermove", handleClick);
     document.getElementById("hiro_box").addEventListener('click', handleClick)
 
     // Bei der Markierungserkennung aktualisiere die Anzeige der Koordinaten
