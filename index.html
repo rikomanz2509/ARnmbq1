@@ -75,14 +75,16 @@
     <a-nft type="nft" url="ARnmbq1/assets/Images/img" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
       <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 1 -2" scale="7 7 7"></a-entity>
       <a-image position="0 0 -5" src="assets/Images/marker (1).png" scale="7 7 7"></a-image>
-      <a-box position='-20 1 -2' color="yellow" scale="42 2 12"></a-box>
+      <a-box position='0 0 0' color="yellow" scale="42 2 12"></a-box>
     </a-nft>
 
     <!-- HIRO MARKER -->
-    <a-marker id="hiro_marker" preset="hiro">
+    <a-marker id="hiro_marker" preset="hiro" markerhandler emitevents="true">
       <a-entity gltf-model="assets/GLman.glb"></a-entity>
-      <a-box id="hiro_box" position='0 0 0' color="blue"></a-box>
+      <a-box id="hiro_box" position='0 0 0' color="red" scale=".5 .5 .5"></a-box>
     </a-marker>
+
+    <a-entity id="coordinateDisplay" position="0 0 -1"></a-entity>
 
   <!-- CAMERA -->
   <a-entity camera></a-entity>
@@ -117,5 +119,26 @@
     function handleClick(){
       document.getElementById('interactionText').style.display = 'block';
     }
+
+
+    // Ereignislistener für das 'markerFound'-Ereignis des HIRO-Markers
+  document.querySelector('a-marker').addEventListener('markerFound', function () {
+    // Bei der Markierungserkennung aktualisiere die Anzeige der Koordinaten
+    updateCoordinateDisplay(this.object3D.position);
+  });
+
+  // Funktion zur Aktualisierung der Koordinatenanzeige
+  function updateCoordinateDisplay(position) {
+    // Wähle das Element zur Anzeige der Koordinaten aus
+    var coordinateDisplay = document.getElementById('coordinateDisplay');
+    
+    // Aktualisiere den Text des Anzeigeelements mit den aktuellen Koordinaten
+    coordinateDisplay.setAttribute('text', {
+      value: 'Position: ' + position.x.toFixed(2) + ', ' + position.y.toFixed(2) + ', ' + position.z.toFixed(2),
+      align: 'center'
+    });
+  }
+
+  
   </script>
 </body>
