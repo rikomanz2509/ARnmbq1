@@ -81,19 +81,7 @@
     <!-- HIRO MARKER -->
     <a-marker id="hiro_marker" preset="hiro" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
       <a-entity gltf-model="assets/magnemite/scene.gltf" position="0 0 0" scale="7 7 7"></a-entity>
-      <a-box id="hiro_box" class="clickable" position='0 0 0' color="yellow" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
-      
-
-      <a-entity
-      id="bowser_model"
-      gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-      scale="5 5 5"
-      position="50 150 0"
-      class="clickable"
-      gesture-handler="minScale: 0.25; maxScale: 10"
-    >
-    </a-entity>
-
+      <a-box id="hiro_box" class="clickable" position='0 0 0' color="blue" scale=".5 .5 .5"  cursor="rayOrigin: mouse" raycaster="objects: .box"></a-box>
 
     </a-marker>
 
@@ -126,6 +114,9 @@
     });
 
     function handleClick(){
+
+      document.getElementById('interactionText').style.display ='block'
+
       var videoElement = document.createElement('a-video');
         videoElement.setAttribute('src', 'assets/Notification.mov'); // Passe die URL zum 360-Grad-Video an
         videoElement.setAttribute('position', '0 1 -2'); // Passe die Position des Videos an
